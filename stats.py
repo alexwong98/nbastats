@@ -6,13 +6,6 @@ import pandas as pd
 import numpy as np
 
 
-def get_career_stats(player, stat):
-	if stat in player.career_log.columns:
-		return player.career_log[stat].tolist()
-	else:
-		print("stat doesn't exist")
-		return None 
-
 def create_player(first, last):
 	try:
 		player = get_player(first, last)
@@ -39,6 +32,15 @@ def create_player(first, last):
 	
 	return player
 
+
+def get_career_stats(player, stat):
+	if stat in player.career_log.columns:
+		return player.career_log[stat].tolist()
+	else:
+		print("stat doesn't exist")
+		return None 
+
+	
 #returns their passing stats in a list ever since
 #first player's first season 
 #not usable due to sporadically unavailable data 

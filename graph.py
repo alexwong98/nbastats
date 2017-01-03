@@ -30,12 +30,15 @@ def generate_line_graph(player, stat):
 
 		chart.buildhtml()	
 		# print(chart.htmlcontent)
-		output_file = open('./templates/stats.html', 'w')
+		open('./templates/stats.html', 'w').close()
+		output_file = open('./templates/stats.html', 'a')
+		output_file.write("{% extends \"base.html\" %}")
 		output_file.write(chart.htmlcontent)
 		output_file.close()
 
 	else:
 		output_file = open('./templates/stats.html', 'w')
+		output_file.write("{% extends \"base.html\" %}")
 		output_file.write("error occured in stats")
 		output_file.close()
 

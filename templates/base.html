@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	{% block head %}
+        <meta charset="utf-8" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.js"></script>
+        {% endblock %}
+    </head>
+    <body>
+    	<h1>Search a player:</h1>
+		<form action = "." method = "POST">
+		<input type = "text" name = "player_name">
+		<input type = "submit" name = "my-form" value="Send">
+		</form>
+    	{% block content %}
+
+    	{% endblock %}
+
+    </body>
+</html>
