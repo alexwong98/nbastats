@@ -3,6 +3,7 @@ from nba_py import player
 from nba_py.player import get_player
 from nba_py. player import PlayerNotFoundException
 import pandas as pd 
+import numpy as np
 
 
 def get_career_stats(player, stat):
@@ -62,6 +63,12 @@ def format_year(first_half_of_season_year):
 
 def next_season(formatted_season):
 	return format_year(int(formatted_season[:4]) + 1)
+
+def moving_mean(a, n = 25):
+	ret = np.cumsum(a, dtype=float)
+	ret[n:] = ret[n:] - ret[:-n]
+	return np.concatenate((np.zeros(n-1),ret[n - 1:] / n)) 
+	
 
 
 
