@@ -25,8 +25,8 @@ def search_player():
 			mc[pid] = player
 		stat_graph = generate_line_graph(player, "PTS")
 		return render_template("stats_template.html", graph = stat_graph)
-	# else:
-	# 	return render_template("base.html")
+	else:
+		return render_template("base.html", error = "Player does not exist.")
 
 if __name__ == "__main__":
 	app.run()

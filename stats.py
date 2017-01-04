@@ -1,7 +1,7 @@
 import goldsberry as gb
 from nba_py import player
 from nba_py.player import get_player
-from nba_py. player import PlayerNotFoundException
+from nba_py.player import PlayerNotFoundException
 import pandas as pd 
 import numpy as np
 
@@ -12,36 +12,32 @@ def get_player_id(first, last):
 		print (first + " " + last + " doesnt exist...")
 		return None 
 
+#creates a dictionary for player data
 def create_player(pid):
-	# try:
-	# 	player = get_player(first, last)
-	# 	player.id = player.values[0]
-	# except PlayerNotFoundException:
-	# 	print (first + " " + last + " doesnt exist...")
-	# 	return None 
-	player.id = pid
-	demo = gb.player.demographics(player.id)
-	demo = pd.DataFrame(demo.player_info())
-	player.draft_year = format_year(demo['DRAFT_YEAR'].iloc[0])
-	player.latest_year = format_year(demo['TO_YEAR'].iloc[0])
-	player.name = str(demo['DISPLAY_LAST_COMMA_FIRST'].iloc[0])
+	player = dict()
+	player['id'] = pid
+	demo = gb.player.demographics(pid)
+	player['demo'] = demo = pd.DataFrame(demo.player_info())
+	player['draft_year'] = format_year(demo['DRAFT_YEAR'].iloc[0])
+	player['latest_year'] = format_year(demo['TO_YEAR'].iloc[0])
+	player['name'] = str(demo['DISPLAY_LAST_COMMA_FIRST'].iloc[0])
 
-	player_game_log = gb.player.game_logs(player.id)
-	player.career_log = list()
-	for year in range(int(player.draft_year[:4]),int(player.latest_year[:4])):
+	player_game_log = gb.player.game_logs(pid)
+	player['career_log'] = list()
+	for year in range(int(player['draft_year'][:4]),int(player['latest_year'][:4])):
 		player_game_log.get_new_data(Season = format_year(year))
 		player_season_game_log = pd.DataFrame(player_game_log.logs())
 		if not player_season_game_log.empty:
-			player.career_log.append(player_season_game_log)
+			player['career_log'].append(player_season_game_log)
 
-	player.career_log = pd.concat(player.career_log)
+	player['career_log'] = pd.concat(player['career_log'])
 	
 	return player
 
 
 def get_career_stats(player, stat):
-	if stat in player.career_log.columns:
-		return player.career_log[stat].tolist()
+	if stat in player['career_log'].columns:
+		return player['career_log'][stat].tolist()
 	else:
 		print("stat doesn't exist")
 		return None 

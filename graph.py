@@ -2,7 +2,7 @@ from nvd3 import lineChart
 from stats import * 
 
 def generate_line_graph(player, stat):
-	if stat in player.career_log.columns:
+	if stat in player['career_log'].columns:
 		career_stats = get_career_stats(player, stat)
 		moving_avg = moving_mean(career_stats, n =82)
 
