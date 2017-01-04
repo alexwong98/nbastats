@@ -36,6 +36,7 @@ def create_player(pid):
 
 
 def get_career_stats(player, stat):
+	print player['career_log'].columns.values
 	if stat in player['career_log'].columns:
 		return player['career_log'][stat].tolist()
 	else:
@@ -76,4 +77,5 @@ def moving_mean(a, n = 25):
 
 
 
-# print(type(get_player_id("Tim", "Duncan")))
+# player = create_player(get_player_id("Tim", "Duncan"))
+# get_career_stats(player, "PTS")

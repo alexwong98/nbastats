@@ -32,19 +32,8 @@ def generate_line_graph(player, stat):
 
 		return str(chart.htmlcontent)
 
-		# with open('./templates/stats.html', 'r') as myfile:
-		# 	stat_html = myfile.read()
-		# stat_html = stat_html % {'graph' : chart.htmlcontent}
-		# print(type(stat_html))
-		# output_file = open('./templates/stats.html', 'w')
-		# output_file.write(stat_html)
-		# output_file.close()
-
 	else:
-		output_file = open('./templates/stats.html', 'w')
-		output_file.write("{% extends \"base.html\" %}")
-		output_file.write("error occured in stats")
-		output_file.close()
+		return None
 
 # player = create_player("Kobe", "Bryant")
 # asdf = str(generate_line_graph(player, "PTS"))

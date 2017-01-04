@@ -13,6 +13,7 @@ def home():
 @app.route('/', methods = ['POST'])
 def search_player():
 	name = request.form['player_name']
+	stat = request.form['stat']
 	name = name.title()
 	full_name = name.split()
 	pid = str(get_player_id(*full_name))
@@ -23,8 +24,8 @@ def search_player():
 		else:
 			player = create_player(pid)
 			mc[pid] = player
-		stat_graph = generate_line_graph(player, "PTS")
-		return render_template("stats_template.html", graph = stat_graph)
+		stat_graph = generate_line_graph(player, stat)
+		return render_template("stats_template.html", graph = stat_graph, player_name = name)
 	else:
 		return render_template("base.html", error = "Player does not exist.")
 

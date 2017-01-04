@@ -11,9 +11,20 @@
     <body>
     	<h1>Search a player:</h1>
 		<form action = "." method = "POST">
-		<input type = "text" name = "player_name">
+		<input type = "text" name = "player_name" value = "{{player_name}}">
+		<input type = "radio" name = "stat" value = "PTS" checked = "checked"> Points
+		<input type = "radio" name = "stat" value = "AST"> Assists
+		<input type = "radio" name = "stat" value = "REB"> Rebounds
+		<input type = "radio" name = "stat" value = "BLK"> Blocks
+		<input type = "radio" name = "stat" value = "STL"> Steals
+		<input type = "radio" name = "stat" value = "FG3M"> 3PM
+		<input type = "radio" name = "stat" value = "FG_PCT"> FG%
+		<input type = "radio" name = "stat" value = "FT_PCT"> FT%
+		<input type = "radio" name = "stat" value = "PLUS_MINUS"> +/-
+		<br>
 		<input type = "submit" name = "my-form" value="Send">
 		</form>
+
 		<label>{{error}}</label>
     	{% block content %}
 
