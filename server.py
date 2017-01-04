@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request
 from graph import *
-
+import pylibmc 
 
 app = Flask(__name__)
+mc = pylibmc.Client(["127.0.0.1"],
+		behaviors={"tcp_nodelay": True, "ketama": True})
 
 @app.route('/')
 def home():
@@ -13,10 +15,16 @@ def search_player():
 	name = request.form['player_name']
 	name = name.title()
 	full_name = name.split()
-	player = create_player(*full_name)
-	# if not player == None:
-	stat_graph = generate_line_graph(player, "PTS")
-	return render_template("stats_template.html", graph = stat_graph)
+	pid = str(get_player_id(*full_name))
+	
+	if not (pid is None):
+		if pid in mc:
+			player = mc[pid]
+		else:
+			player = create_player(pid)
+			mc[pid] = player
+		stat_graph = generate_line_graph(player, "PTS")
+		return render_template("stats_template.html", graph = stat_graph)
 	# else:
 	# 	return render_template("base.html")
 

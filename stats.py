@@ -5,15 +5,21 @@ from nba_py. player import PlayerNotFoundException
 import pandas as pd 
 import numpy as np
 
-
-def create_player(first, last):
+def get_player_id(first, last):
 	try:
-		player = get_player(first, last)
-		player.id = player.values[0]
+		return int(get_player(first, last).values[0])
 	except PlayerNotFoundException:
 		print (first + " " + last + " doesnt exist...")
 		return None 
 
+def create_player(pid):
+	# try:
+	# 	player = get_player(first, last)
+	# 	player.id = player.values[0]
+	# except PlayerNotFoundException:
+	# 	print (first + " " + last + " doesnt exist...")
+	# 	return None 
+	player.id = pid
 	demo = gb.player.demographics(player.id)
 	demo = pd.DataFrame(demo.player_info())
 	player.draft_year = format_year(demo['DRAFT_YEAR'].iloc[0])
@@ -74,3 +80,4 @@ def moving_mean(a, n = 25):
 
 
 
+# print(type(get_player_id("Tim", "Duncan")))
