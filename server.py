@@ -15,8 +15,8 @@ def search_player():
 	full_name = name.split()
 	player = create_player(*full_name)
 	# if not player == None:
-	generate_line_graph(player, "PTS")
-	return render_template("stats.html")
+	stat_graph = generate_line_graph(player, "PTS")
+	return render_template("stats_template.html", graph = stat_graph)
 	# else:
 	# 	return render_template("base.html")
 

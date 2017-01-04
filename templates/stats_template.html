@@ -1,1 +1,10 @@
-stats_template.html
+{% extends "base.html" %}
+{% block head %}
+	{{ super() }}
+{% endblock %}
+
+{% block content %}
+{% autoescape false %}
+{{graph}}
+{% endautoescape %}
+{% endblock %}

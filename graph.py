@@ -28,13 +28,17 @@ def generate_line_graph(player, stat):
 		}
 		chart.add_serie(**kwargs2)
 
-		chart.buildhtml()	
-		# print(chart.htmlcontent)
-		open('./templates/stats.html', 'w').close()
-		output_file = open('./templates/stats.html', 'a')
-		output_file.write("{% extends \"base.html\" %}")
-		output_file.write(chart.htmlcontent)
-		output_file.close()
+		chart.buildcontent()	
+
+		return str(chart.htmlcontent)
+
+		# with open('./templates/stats.html', 'r') as myfile:
+		# 	stat_html = myfile.read()
+		# stat_html = stat_html % {'graph' : chart.htmlcontent}
+		# print(type(stat_html))
+		# output_file = open('./templates/stats.html', 'w')
+		# output_file.write(stat_html)
+		# output_file.close()
 
 	else:
 		output_file = open('./templates/stats.html', 'w')
@@ -42,3 +46,9 @@ def generate_line_graph(player, stat):
 		output_file.write("error occured in stats")
 		output_file.close()
 
+# player = create_player("Kobe", "Bryant")
+# asdf = str(generate_line_graph(player, "PTS"))
+# print(type(asdf))
+# output_file = open('./templates/stats.html', 'w')
+# output_file.write(asdf)
+# output_file.close()
