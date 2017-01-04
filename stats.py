@@ -36,7 +36,6 @@ def create_player(pid):
 
 
 def get_career_stats(player, stat):
-	print player['career_log'].columns.values
 	if stat in player['career_log'].columns:
 		return player['career_log'][stat].tolist()
 	else:

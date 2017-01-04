@@ -11,16 +11,43 @@
     <body>
     	<h1>Search a player:</h1>
 		<form action = "." method = "POST">
-		<input type = "text" name = "player_name" value = "{{player_name}}">
-		<input type = "radio" name = "stat" value = "PTS" checked = "checked"> Points
-		<input type = "radio" name = "stat" value = "AST"> Assists
-		<input type = "radio" name = "stat" value = "REB"> Rebounds
-		<input type = "radio" name = "stat" value = "BLK"> Blocks
-		<input type = "radio" name = "stat" value = "STL"> Steals
-		<input type = "radio" name = "stat" value = "FG3M"> 3PM
-		<input type = "radio" name = "stat" value = "FG_PCT"> FG%
-		<input type = "radio" name = "stat" value = "FT_PCT"> FT%
-		<input type = "radio" name = "stat" value = "PLUS_MINUS"> +/-
+		<input type = "text" name = "player_names" value = "{{player_names}}">
+		<input type = "radio" name = "stat" value = "PTS" 
+		{% if stat == "PTS" %} 
+			checked = "checked"
+		{% endif %}> Points
+		<input type = "radio" name = "stat" value = "AST"
+		{% if stat == "AST" %} 
+			checked = "checked"
+		{% endif %}> Assists
+		<input type = "radio" name = "stat" value = "REB"
+		{% if stat == "REB" %} 
+			checked = "checked"
+		{% endif %}> Rebounds
+		<input type = "radio" name = "stat" value = "BLK"
+		{% if stat == "BLK" %} 
+			checked = "checked"
+		{% endif %}> Blocks
+		<input type = "radio" name = "stat" value = "STL"
+		{% if stat == "STL" %} 
+			checked = "checked"
+		{% endif %}> Steals
+		<input type = "radio" name = "stat" value = "FG3M"
+		{% if stat == "FG3M" %} 
+			checked = "checked"
+		{% endif %}> 3PM
+		<input type = "radio" name = "stat" value = "FG_PCT"
+		{% if stat == "FG_PCT" %} 
+			checked = "checked"
+		{% endif %}> FG%
+		<input type = "radio" name = "stat" value = "FT_PCT"
+		{% if stat == "FT_PCT" %} 
+			checked = "checked"
+		{% endif %}> FT%
+		<input type = "radio" name = "stat" value = "PLUS_MINUS"
+		{% if stat == "PLUS_MINUS" %} 
+			checked = "checked"
+		{% endif %}> +/-
 		<br>
 		<input type = "submit" name = "my-form" value="Send">
 		</form>
