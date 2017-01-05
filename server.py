@@ -8,7 +8,7 @@ mc = pylibmc.Client(["127.0.0.1"],
 
 @app.route('/')
 def home():
-	return render_template("stats_template.html", stat = "PTS")
+	return render_template("stats.html", stat = "PTS")
 
 @app.route('/', methods = ['POST'])
 def search_player():
@@ -31,11 +31,11 @@ def search_player():
 				mc[pid] = player
 				players.append(player)
 		else:
-			return render_template("stats_template.html", 
+			return render_template("stats.html", 
 				error = "Player does not exist.")
 
 	stat_graph = generate_line_graph(players, stat)
-	return render_template("stats_template.html", graph = stat_graph, 
+	return render_template("stats.html", graph = stat_graph, 
 			player_names = names, stat = stat)
 	
 if __name__ == "__main__":

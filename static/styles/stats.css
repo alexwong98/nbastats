@@ -1,0 +1,9 @@
+h1 {
+	font-family: Helvetica, Arial, sans-serif;
+	color: red;
+}
+
+#stat_radio {
+	text-align: justify;
+	min-width = 500px;
+}
