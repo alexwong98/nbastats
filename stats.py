@@ -36,11 +36,24 @@ def create_player(pid):
 
 
 def get_career_stats(player, stat):
-	if stat in player['career_log'].columns:
-		return player['career_log'][stat].tolist()
+	if (stat == 'WL'):
+		if stat in player['career_log'].columns:
+			wl = player['career_log'][stat].tolist()
+			for i,game in enumerate(wl):
+				if game == 'W':
+					wl[i] = 1
+				else:
+					wl[i] = 0
+			return wl
+		else:
+			return None
+
 	else:
-		print("stat doesn't exist")
-		return None 
+		if stat in player['career_log'].columns:
+			return player['career_log'][stat].tolist()
+		else:
+			print("stat doesn't exist")
+			return None 
 
 	
 #returns their passing stats in a list ever since

@@ -51,7 +51,7 @@ def generate_line_graph(players, stat):
 
 		if stat in player['career_log'].columns:
 			career_stats = get_career_stats(player, stat)
-			moving_avg = moving_mean(career_stats, n =82)
+			moving_avg = moving_mean(career_stats, n = 25)
 
 			xdata= range(len(career_stats))
 			ydata= career_stats
@@ -60,8 +60,9 @@ def generate_line_graph(players, stat):
 			kwargs1 = {
 				"y": ydata,
 				"x": xdata,
-				"name": player['name'] + stat,
+				"name": player['name'] + ": " + stat,
 				"extra": extra_serie,
+				"disabled": True,
 			}
 
 			chart.add_serie(**kwargs1)
@@ -70,7 +71,7 @@ def generate_line_graph(players, stat):
 			kwargs2 = {
 				"y": ydata2,
 				"x": xdata,
-				"name": player['name'] + "moving mean",
+				"name": player['name'] +  ": " + "moving mean",
 			}
 			chart.add_serie(**kwargs2)
 

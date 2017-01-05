@@ -44,12 +44,24 @@
 		{% if stat == "FT_PCT" %} 
 			checked = "checked"
 		{% endif %}> FT%
+		<input type = "radio" name = "stat" value = "FG3_PCT"
+		{% if stat == "FG3_PCT" %} 
+			checked = "checked"
+		{% endif %}> 3P%
 		<input type = "radio" name = "stat" value = "PLUS_MINUS"
 		{% if stat == "PLUS_MINUS" %} 
 			checked = "checked"
 		{% endif %}> +/-
+		<input type = "radio" name = "stat" value = "WL"
+		{% if stat == "WL" %} 
+			checked = "checked"
+		{% endif %}> Win/Loss
+		<input type = "radio" name = "stat" value = "MIN"
+		{% if stat == "MIN" %} 
+			checked = "checked"
+		{% endif %}> Minutes
 		<br>
-		<input type = "submit" name = "my-form" value="Send">
+		<input type = "submit" value="Search">
 		</form>
 
 		<label>{{error}}</label>
