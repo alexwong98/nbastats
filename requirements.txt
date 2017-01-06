@@ -1,13 +1,14 @@
-requests==2.12.4
+
 click==6.6
 Flask==0.12
 itsdangerous==0.24
 Jinja2==2.8.1
 MarkupSafe==0.23
-nba-py==0.1.1a2
 numpy==1.11.3
 pandas==0.19.2
+requests==2.12.4
 py-goldsberry==1.0.1
+nba-py==0.1.1a2
 pylibmc==1.5.1
 python-dateutil==2.6.0
 python-memcached==1.58
