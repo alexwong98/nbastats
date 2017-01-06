@@ -6,7 +6,6 @@ MarkupSafe==0.23
 nba-py==0.1.1a2
 numpy==1.11.3
 pandas==0.19.2
-pkg-resources==0.0.0
 py-goldsberry==1.0.1
 pylibmc==1.5.1
 python-dateutil==2.6.0
