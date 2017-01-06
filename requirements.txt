@@ -8,9 +8,9 @@ numpy==1.11.3
 pandas==0.19.2
 requests==2.12.4
 nba-py==0.1.1a2
+python-memcached==1.58
 pylibmc==1.5.1
 python-dateutil==2.6.0
-python-memcached==1.58
 python-nvd3==0.14.2
 python-slugify==1.1.4
 pytz==2016.10
