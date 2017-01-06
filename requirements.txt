@@ -1,3 +1,4 @@
+requests==2.12.4
 click==6.6
 Flask==0.12
 itsdangerous==0.24
@@ -13,7 +14,6 @@ python-memcached==1.58
 python-nvd3==0.14.2
 python-slugify==1.1.4
 pytz==2016.10
-requests==2.12.4
 six==1.10.0
 Unidecode==0.4.19
 Werkzeug==0.11.15
