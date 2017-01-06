@@ -6,7 +6,6 @@ Jinja2==2.8.1
 MarkupSafe==0.23
 numpy==1.11.3
 pandas==0.19.2
-requests==2.12.4
 py-goldsberry==1.0.1
 nba-py==0.1.1a2
 pylibmc==1.5.1
