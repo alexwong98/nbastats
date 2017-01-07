@@ -17,3 +17,4 @@ pytz==2016.10
 six==1.10.0
 Unidecode==0.4.19
 Werkzeug==0.11.15
+py-goldsberry==1.0.1
