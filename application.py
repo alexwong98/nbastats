@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request
 from graph import *
 import pylibmc 
+from werkzeug.contrib.cache import MemcachedCache
 
 application = Flask(__name__)
-mc = pylibmc.Client(["127.0.0.1"],
-		behaviors={"tcp_nodelay": True, "ketama": True})
+
+cache = MemcachedCache(['127.0.0.1:11211'])
 
 @application.route('/')
 def home():
@@ -23,13 +24,7 @@ def search_player():
 		pid = str(get_player_id(*full_name))
 	
 		if not (pid is None):
-			if pid in mc:
-				player = mc[pid]
-				players.append(player)
-			else:
-				player = create_player(pid)
-				mc[pid] = player
-				players.append(player)
+			players.append(get_player_from_cache(pid))
 		else:
 			return render_template("stats.html", 
 				error = "Player does not exist.")
@@ -38,5 +33,15 @@ def search_player():
 	return render_template("stats.html", graph = stat_graph, 
 			player_names = names, stat = stat)
 	
+def get_player_from_cache(pid):
+    player = cache.get(pid)
+    if player is None:
+        player = create_player(pid)
+        cache.set(pid, player, timeout = 5 * 60)
+    return player
+
 if __name__ == "__main__":
 	application.run(host='0.0.0.0')
+
+
+
