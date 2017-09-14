@@ -20,7 +20,7 @@ def kmeans(reduced_data, n_clusters):
     "labels": labels,
     "centroids": centroids,
     "inertia" : inertia,
-    "silhouette_score": sil_score
+    "silhouette_score": s_score
   }
 
   return data_dictionary
@@ -88,13 +88,14 @@ def cluster():
   df['Player'] = player_list
   df['Status'] = status_list
   df['Player_ID'] = playerid_list
-  df['labels'] = df['labels'].map({0: 'Defensive Centers',
-    1: '3-and-D Wings',
-    2: 'Scoring Wings',
-    3: 'Versatile Forwards',
-    4: 'Floor Generals',
-    5: 'Shooting Wings',
-    6: 'Combo Guards',
-    7: 'Offensive Centers'})
+  df['labels'] = df['labels'].map({
+    0: 'Offensive Centre',
+    1: 'Scoring Wing',
+    2: 'Shooting Wing',
+    3: '3&D',
+    4: 'Defensive Centre',
+    5: 'Versatile Forward',
+    6: 'Combo Guard',
+    7: 'Floor General'})
 
   return df 
