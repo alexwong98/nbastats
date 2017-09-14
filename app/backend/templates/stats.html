@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+{% block head %}
+	{{ super() }}
+{% endblock %}
+
+{% block content %}
+{% autoescape false %}
+<h3>Player type: {{player_type}}</h3>
+{{graph}}
+
+<h4>Similar players:</h4>
+<ul>
+{% for p in similar_players %}
+    <li>{{p}}</li>
+{% endfor %}
+</ul>
+{% endautoescape %}
+{% endblock %}
