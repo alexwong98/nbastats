@@ -14,12 +14,10 @@ nba-py==0.1.1a2
 numpy==1.13.1
 packaging==16.8
 pandas==0.20.3
-pkg-resources==0.0.0
 py-goldsberry==1.0.1
 pylibmc==1.5.2
 pyparsing==2.2.0
 python-dateutil==2.6.1
-python-nvd3==0.14.2
 python-slugify==1.1.4
 pytz==2017.2
 requests==2.18.4

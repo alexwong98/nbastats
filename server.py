@@ -1,11 +1,13 @@
 import os
 from flask import Flask, render_template, request
-from graph import *
+# from graph import *
+from stats import *
 import pylibmc 
 from werkzeug.contrib.cache import MemcachedCache
 import player_kmeans
 import numpy as np
 import pandas as pd 
+import json
 
 templateDirectory = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'app/backend/templates')
 staticDirectory = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'app/backend/static')
@@ -49,14 +51,15 @@ def search_player():
     player_type, similar_players = player_kmeans.get_similar_players(players_df, names_split[0])
 
   similar_players = map(lambda p: p[1]['Player'], similar_players)
-  stat_graph = generate_line_graph(players, stat)
+  # stat_graph = generate_line_graph(players, stat)
 
+  print json.dumps(get_data(players, stat))
   return render_template("stats.html", 
-      graph = stat_graph, 
-      player_names = names, 
-      stat = stat, 
-      similar_players = similar_players,
-      player_type = player_type
+    player_names = names, 
+    stat = stat, 
+    data = json.dumps(get_data(players, stat)),
+    similar_players = similar_players,
+    player_type = player_type
   )
   
 def get_player_from_cache(pid):

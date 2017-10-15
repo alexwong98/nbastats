@@ -22,8 +22,12 @@
   },
   "homepage": "https://github.com/jbkuczma/flask-react#readme",
   "dependencies": {
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "chart.js": "^2.7.0",
+    "install": "^0.10.1",
+    "npm": "^5.5.1",
+    "react": "^15.6.2",
+    "react-chartjs-2": "^2.6.4",
+    "react-dom": "^15.6.2"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

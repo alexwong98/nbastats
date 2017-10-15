@@ -84,4 +84,22 @@ def next_season(formatted_season):
 def moving_mean(a, n = 25):
   ret = np.cumsum(a, dtype=float)
   ret[n:] = ret[n:] - ret[:-n]
-  return np.concatenate((np.zeros(n-1),ret[n - 1:] / n)) 
+  return np.concatenate((np.zeros(n-1),ret[n - 1:] / n))
+
+
+def get_data(players, stat):
+  player_stats = [] 
+  for player in players:
+    if stat in player['career_log'].columns:
+      career_stats = get_career_stats(player, stat)
+      moving_avg = moving_mean(career_stats, n = 25).tolist()
+      xdata= range(len(career_stats))
+      ydata= moving_avg
+
+      player_stats.append({
+        "y": ydata,
+        "x": xdata,
+        "name": player['name']
+      })
+      
+  return player_stats
